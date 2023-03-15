@@ -21,12 +21,15 @@ function computerChoice() {
 computerChoice();
 console.log("ccc", compChoice);
 let result;
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
 function playGame(){
-    if (playerChoice === compChoice) result = 'This round is a tie.  Give it another shot.';
-    //return result;
-    else if (((playerChoice === 'rock') && (compChoice === 'scissors')) || ((playerChoice === 'scissors') && (compChoice === 'paper')) || ((playerChoice === 'paper') && (compChoice === 'rock'))) result = 'You have triumphed in this round. Go again!';
-    else result = 'The coming AI apocalypse is showing its benevolence.  Go again!';
+    if (playerChoice === compChoice) result = 'This round is a tie.  Give it another shot.', round = round +1;
+   
+    else if (((playerChoice === 'rock') && (compChoice === 'scissors')) || ((playerChoice === 'scissors') && (compChoice === 'paper')) || ((playerChoice === 'paper') && (compChoice === 'rock'))) result = 'You have triumphed in this round. Go again!', playerScore = playerScore +1, round = round +1;
+    else result = 'The coming AI apocalypse is showing its benevolence.  Go again!', computerScore = computerScore +1, round = round +1;
 }
 playGame();
-console.log('r-', result);
+console.log('r-', result, 'ps', playerScore,'cs', computerScore, 'r', round);
 
