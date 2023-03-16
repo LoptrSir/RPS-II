@@ -37,4 +37,3 @@ function playGame(){
 playGame();
 console.log('pc-', playerChoice);
 console.log('r-', result, 'ps', playerScore,'cs', computerScore, 'r', round);
-

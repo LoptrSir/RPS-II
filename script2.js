@@ -1,9 +1,9 @@
-let playerChoice;
+let playerChoice = prompt("So what shall it be? Rock, Paper or Scissors?");
 let compChoice;
+let result;
 let playerScore = 0;
 let computerScore = 0;
 let round = 0;
-let result;
 
 console.log("PC", playerChoice);
 
@@ -28,7 +28,6 @@ computerChoice();
 console.log("ccc", compChoice);
 
 function playGame(){
-    playerChoice = prompt("So what shall it be? Rock, Paper or Scissors?")
     if (playerChoice === compChoice) result = 'This round is a tie.  Give it another shot.', round = round +1;
    
     else if (((playerChoice === 'rock') && (compChoice === 'scissors')) || ((playerChoice === 'scissors') && (compChoice === 'paper')) || ((playerChoice === 'paper') && (compChoice === 'rock'))) result = 'You have triumphed in this round. Go again!', playerScore = playerScore +1, round = round +1;
@@ -37,4 +36,3 @@ function playGame(){
 playGame();
 console.log('pc-', playerChoice);
 console.log('r-', result, 'ps', playerScore,'cs', computerScore, 'r', round);
-
