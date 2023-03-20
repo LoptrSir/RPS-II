@@ -1,26 +1,24 @@
 let playerChoice;
 let compChoice;
 let result;
-let playerScore = 4;
-let computerScore = 4;
+let playerScore = 0;
+let computerScore = 0;
 let round = 0;
 let winner;
-// Can I combine random with RPS?
-let getComputerRandom = Math.floor(Math.random() * 3 + 1);
-console.log("GR", getComputerRandom);
 
 function computerChoice() {
+  let getComputerRandom = Math.floor(Math.random() * 3 + 1);
+  //console.log("GR", getComputerRandom);
   if (getComputerRandom === 1) compChoice = "rock";
   else if (getComputerRandom === 2) compChoice = "paper";
   else if (getComputerRandom === 3) compChoice = "scissors";
 }
 
-// Need to get computerChoice to automatically call, Why cant I fold it into compChoice?
-computerChoice();
-console.log("ccc", compChoice);
-
 function playGame() {
-  playerChoice = prompt("So what shall it be? Rock, Paper or Scissors?");
+    playerChoice = prompt("So what shall it be? Rock, Paper or Scissors?");
+  computerChoice();
+  console.log("PC", playerChoice);
+  console.log("ccc", compChoice);
   if (playerChoice === compChoice)
     (result = "This round is a tie.  Give it another shot."),
       (round = round + 1);
@@ -37,9 +35,13 @@ function playGame() {
       "The coming AI apocalypse is showing its benevolence.  Go again!"),
       (computerScore = computerScore + 1),
       (round = round + 1);
-  declareWinner();
+
+
+  //console.log("PG13", playerScore, computerScore);
+console.log("r-", result, "ps", playerScore, "cs", computerScore, "r", round);
+  playAgain();
 }
-console.log("PC", playerChoice);
+
 function declareWinner() {
   if (playerScore > computerScore)
     winner = "Congratulations!  You have represented humanity well.";
@@ -52,8 +54,7 @@ function declareWinner() {
 function playAgain() {
   if (playerScore < 5 && computerScore < 5) playGame();
   else declareWinner();
+  //console.log('PA', round);
 }
-playAgain();
-console.log("pc-", playerChoice);
-console.log("PG", playerScore, computerScore);
-console.log("r-", result, "ps", playerScore, "cs", computerScore, "r", round);
+playGame();
+//console.log("pc-", playerChoice);
