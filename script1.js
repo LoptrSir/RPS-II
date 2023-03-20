@@ -57,4 +57,3 @@ playAgain();
 console.log("pc-", playerChoice);
 console.log("PG", playerScore, computerScore);
 console.log("r-", result, "ps", playerScore, "cs", computerScore, "r", round);
-
