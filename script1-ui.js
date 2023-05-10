@@ -15,12 +15,10 @@ function computerChoice() {
 }
 
 function playGame() {
-  playerChoice = prompt(
-    "So what shall it be? Rock, Paper or Scissors?"
-  ).toLowerCase();
-  //if (playerChoice !== 'rock'), || (playerChoice !== 'paper') || (playerChoice !== 'scissors'); prompt("Kindly make a selection of the choices given...")
+  //console.log('pc1', playerChoice);
+
   computerChoice();
-  console.log("PC", playerChoice, "ccc", compChoice);
+  console.log("PC", playerChoice, "cc", compChoice);
   if (playerChoice === compChoice)
     (result = "This round is a tie.  Give it another shot."),
       (tie = tie + 1),
@@ -62,7 +60,17 @@ function declareWinner() {
   console.log("w", winner);
 }
 function playAgain() {
-  if (playerScore < 5 && computerScore < 5) playGame();
-  else declareWinner();
-}
-playGame();
+  if (playerScore >= 5 || computerScore >= 5) {
+    declareWinner();
+  }
+};
+
+
+const btns = document.querySelectorAll('button');
+btns.forEach((btn) => {
+  btn.addEventListener('click', () => (playerChoice = btn.id, playGame(playerChoice)));
+
+  console.log('pc2', playerChoice)
+});
+
+// btn.this.id    playerChoice   is being monkeyed with currently  console.log btns
