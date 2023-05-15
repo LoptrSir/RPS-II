@@ -36,33 +36,53 @@ function playGame() {
       "The coming AI apocalypse is showing its benevolence.  Go again!"),
       (computerScore = computerScore + 1),
       (round = round + 1);
-  console.log(
-    "r-",
-    result,
-    "ps",
-    playerScore,
-    "cs",
-    computerScore,
-    "t",
-    tie,
-    "r",
-    round
-  );
+
+  // figure our how to consolidate this into querySelectorAll.  it has to be about selecting ID and then updating each item [i]
+  //let results = document.querySelectorAll('.results');
+  let res = document.querySelector('#res');
+  res.textContent = result;
+  let ps = document.querySelector('#ps');
+  ps.textContent = playerScore;
+  let cs = document.querySelector('#cs');
+  cs.textContent = computerScore;
+  let t = document.querySelector('#t');
+  t.textContent = tie;
+  let rds = document.querySelector('#rds');
+  rds.textContent = round;
+  //console.log(
+  //"r-",
+  // result,
+  //"ps",
+  // playerScore,
+  // "cs",
+  //computerScore,
+  // "t",
+  // tie,
+  // "r",
+  // round
+  //);
+  //console.log('result', results);
   playAgain();
 }
 
 function declareWinner() {
+  // once winner is declared cancel eventListener
   if (playerScore > computerScore)
     winner = "Congratulations!  You have represented humanity well.";
   else
     winner =
       "This is unfortunate, AI is one step closer to becoming the overlords of humanity.";
+   const win = document.createElement('h1');
+   win.innerText = winner; 
+   document.body.appendChild(win);
+     console.log('win', win);  
   console.log("w", winner);
 }
 function playAgain() {
   if (playerScore >= 5 || computerScore >= 5) {
     declareWinner();
   }
+
 };
 
 
@@ -73,4 +93,5 @@ btns.forEach((btn) => {
   console.log('pc2', playerChoice)
 });
 
-// btn.this.id    playerChoice   is being monkeyed with currently  console.log btns
+// Stop eventlistener/display winner once winner is declared, 
+
