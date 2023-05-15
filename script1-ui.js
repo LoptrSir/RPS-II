@@ -82,7 +82,7 @@ function playAgain() {
   if (playerScore >= 5 || computerScore >= 5) {
     declareWinner();
   }
-  console.log("PA", playerScore, computerScore);
+
 };
 
 
@@ -94,3 +94,4 @@ btns.forEach((btn) => {
 });
 
 // Stop eventlistener/display winner once winner is declared, 
+
