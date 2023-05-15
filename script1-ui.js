@@ -36,31 +36,31 @@ function playGame() {
       "The coming AI apocalypse is showing its benevolence.  Go again!"),
       (computerScore = computerScore + 1),
       (round = round + 1);
-      // change console logs to DOM methods
 
-      //let results = document.querySelectorAll('.results');
-      let res = document.querySelector('#res');
-      res.textContent = result;
-      let ps = document.querySelector('#ps');
-      ps.textContent = playerScore;
-      let cs = document.querySelector('#cs');
-      cs.textContent = computerScore;
-      let t = document.querySelector('#t');
-      t.textContent = tie;
-      let rds = document.querySelector('#rds');
-      rds.textContent = round;
-              console.log(
-    "r-",
-    result,
-    "ps",
-    playerScore,
-    "cs",
-    computerScore,
-    "t",
-    tie,
-    "r",
-    round
-  );
+  // figure our how to consolidate this into querySelectorAll
+  //let results = document.querySelectorAll('.results');
+  let res = document.querySelector('#res');
+  res.textContent = result;
+  let ps = document.querySelector('#ps');
+  ps.textContent = playerScore;
+  let cs = document.querySelector('#cs');
+  cs.textContent = computerScore;
+  let t = document.querySelector('#t');
+  t.textContent = tie;
+  let rds = document.querySelector('#rds');
+  rds.textContent = round;
+  //console.log(
+  //"r-",
+  // result,
+  //"ps",
+  // playerScore,
+  // "cs",
+  //computerScore,
+  // "t",
+  // tie,
+  // "r",
+  // round
+  //);
   //console.log('result', results);
   playAgain();
 }
