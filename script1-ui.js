@@ -37,7 +37,7 @@ function playGame() {
       (computerScore = computerScore + 1),
       (round = round + 1);
 
-  // figure our how to consolidate this into querySelectorAll
+  // figure our how to consolidate this into querySelectorAll.  it has to be about selecting ID and then updating each item [i]
   //let results = document.querySelectorAll('.results');
   let res = document.querySelector('#res');
   res.textContent = result;
@@ -66,12 +66,16 @@ function playGame() {
 }
 
 function declareWinner() {
-  // once winner is declared display declaration and cancel eventListener
+  // once winner is declared cancel eventListener
   if (playerScore > computerScore)
     winner = "Congratulations!  You have represented humanity well.";
   else
     winner =
       "This is unfortunate, AI is one step closer to becoming the overlords of humanity.";
+   const win = document.createElement('h1');
+   win.innerText = winner; 
+   document.body.appendChild(win);
+     console.log('win', win);  
   console.log("w", winner);
 }
 function playAgain() {
