@@ -96,7 +96,7 @@ function playAgain() {
   if (playerScore >= 5 || computerScore >= 5) {
     declareWinner();
   }
-  console.log("PA", playerScore, computerScore);
+
 };
 
 function reset() {
@@ -113,9 +113,4 @@ btns.forEach((btn) => {
   btn.addEventListener('click', () => (playerChoice = btn.id, playGame(playerChoice)));
 
   console.log('pc2', playerChoice)
-});
-
-const remove = document.querySelector("#reset");
-remove.addEventListener('click', reset);
-
-// Stop eventlistener once winner is declared, 
+}
