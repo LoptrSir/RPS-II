@@ -1,12 +1,13 @@
-let playerChoice;
-let compChoice;
-let result;
+let playerChoice = '';
+let compChoice = '';
+let result = '';
 let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
 let round = 0;
-let winner;
-
+let winner = '';
+let remove = false;
+let win;
 
 function computerChoice() {
   let getComputerRandom = Math.floor(Math.random() * 3 + 1);
@@ -16,8 +17,6 @@ function computerChoice() {
 }
 
 function playGame() {
-  //console.log('pc1', playerChoice);
-
   computerChoice();
   console.log("PC", playerChoice, "cc", compChoice);
   if (playerChoice === compChoice)
@@ -37,37 +36,11 @@ function playGame() {
       "The coming AI apocalypse is showing its benevolence.  Go again!"),
       (computerScore = computerScore + 1),
       (round = round + 1);
-
-  // figure our how to consolidate this into querySelectorAll.  it has to be about selecting ID and then updating each item [i]
-  //let results = document.querySelectorAll('.results');
-  //let res = document.querySelector('#res');
-  //res.textContent = result;
-  //let ps = document.querySelector('#ps');
-  //ps.textContent = playerScore;
-  //let cs = document.querySelector('#cs');
-  //cs.textContent = computerScore;
-  //let t = document.querySelector('#t');
-  //t.textContent = tie;
-  //let rds = document.querySelector('#rds');
-  //rds.textContent = round;
-  //console.log(
-  //"r-",
-  // result,
-  //"ps",
-  // playerScore,
-  // "cs",
-  //computerScore,
-  // "t",
-  // tie,
-  // "r",
-  // round
-  //);
-  //console.log('result', results);
   display();
   playAgain();
 }
 
-function display(){
+function display() {
   let res = document.querySelector('#res');
   res.textContent = result;
   let ps = document.querySelector('#ps');
@@ -78,25 +51,29 @@ function display(){
   t.textContent = tie;
   let rds = document.querySelector('#rds');
   rds.textContent = round;
+  console.log('remove', remove);
 };
+
 function declareWinner() {
-  // once winner is declared cancel eventListener
   if (playerScore > computerScore)
     winner = "Congratulations!  You have represented humanity well.";
   else
     winner =
       "This is unfortunate, AI is one step closer to becoming the overlords of humanity.";
-  const win = document.createElement('h1');
+  win = document.createElement('h1');
   win.innerText = winner;
   document.body.appendChild(win);
-  console.log('win', win);
   console.log("w", winner);
+  remove = true;
+  console.log('remove', remove);
+  if (remove) {
+    removeClickListeners();
+  }
 }
 function playAgain() {
   if (playerScore >= 5 || computerScore >= 5) {
     declareWinner();
   }
-
 };
 
 function reset() {
@@ -104,13 +81,33 @@ function reset() {
   computerScore = 0;
   tie = 0;
   round = 0;
-  console.log('clicked');
-display()
+  remove = false
+  result = '';
+  win.remove();
+  btns.forEach((btn) => {
+    btn.addEventListener('click', clickHandler);
+  });
+  display();
+  console.log('clicked', result);
 };
+
+const clear = document.querySelector("#reset");
+clear.addEventListener('click', reset);
+
+function clickHandler(event) {
+  playerChoice = event.target.id;
+  playGame(playerChoice);
+  console.log('btn clicked', playerChoice);
+}
 
 const btns = document.querySelectorAll('.btn');
 btns.forEach((btn) => {
-  btn.addEventListener('click', () => (playerChoice = btn.id, playGame(playerChoice)));
+  btn.addEventListener('click', clickHandler);
+});
 
-  console.log('pc2', playerChoice)
+function removeClickListeners() {
+  btns.forEach(btn => {
+    btn.removeEventListener('click', clickHandler),
+      console.log('RCE?')
+  });
 }
