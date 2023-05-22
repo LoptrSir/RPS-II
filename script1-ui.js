@@ -18,7 +18,7 @@ function computerChoice() {
 
 function playGame() {
   computerChoice();
-  console.log("PC", playerChoice, "cc", compChoice);
+  ("PC", playerChoice, "cc", compChoice);
   if (playerChoice === compChoice)
     (result = "This round is a tie.  Give it another shot."),
       (tie = tie + 1),
@@ -51,7 +51,7 @@ function display() {
   t.textContent = tie;
   let rds = document.querySelector('#rds');
   rds.textContent = round;
-  console.log('remove', remove);
+  //console.log('remove', remove);
 };
 
 function declareWinner() {
@@ -60,12 +60,14 @@ function declareWinner() {
   else
     winner =
       "This is unfortunate, AI is one step closer to becoming the overlords of humanity.";
-  win = document.createElement('h1');
-  win.innerText = winner;
-  document.body.appendChild(win);
-  console.log("w", winner);
+  h1 = document.createElement('h1');
+  h1.innerText = winner;
+  document.body.appendChild(h1);
+  win = h1;
+  ('win', win);
+  ("w", winner);
   remove = true;
-  console.log('remove', remove);
+  ('remove', remove);
   if (remove) {
     removeClickListeners();
   }
@@ -83,12 +85,14 @@ function reset() {
   round = 0;
   remove = false
   result = '';
-  win.remove();
+  if (win) {
+    win.remove();
+  }
   btns.forEach((btn) => {
     btn.addEventListener('click', clickHandler);
   });
   display();
-  console.log('clicked', result);
+  //console.log('clicked', result);
 };
 
 const clear = document.querySelector("#reset");
@@ -97,7 +101,7 @@ clear.addEventListener('click', reset);
 function clickHandler(event) {
   playerChoice = event.target.id;
   playGame(playerChoice);
-  console.log('btn clicked', playerChoice);
+  //console.log('btn clicked', playerChoice);
 }
 
 const btns = document.querySelectorAll('.btn');
@@ -107,7 +111,7 @@ btns.forEach((btn) => {
 
 function removeClickListeners() {
   btns.forEach(btn => {
-    btn.removeEventListener('click', clickHandler),
-      console.log('RCE?')
+    btn.removeEventListener('click', clickHandler)
+    //console.log('RCE?');
   });
 }
