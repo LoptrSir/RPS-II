@@ -1,3 +1,6 @@
+// For a CONSOLE ONLY version use index.html and script1.js 
+// That version only gives console.log() results.
+
 let playerChoice = '';
 let compChoice = '';
 let result = '';
