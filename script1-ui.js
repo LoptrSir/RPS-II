@@ -118,3 +118,5 @@ function removeClickListeners() {
     //console.log('RCE?');
   });
 }
+
+// nest steps are to style with CSS.  RPS buttons, background, etc.  Consider sound effects.
